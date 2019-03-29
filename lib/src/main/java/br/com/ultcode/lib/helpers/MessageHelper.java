@@ -4,16 +4,19 @@ import java.io.Serializable;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.context.Flash;
 import javax.inject.Inject;
 
 public class MessageHelper implements Serializable {
 
 	private static final long serialVersionUID = -8169767224068651648L;
 	private FacesContext context;
+	private Flash flash;
 
 	@Inject
-	public MessageHelper(FacesContext context) {
+	public MessageHelper(FacesContext context, Flash flash) {
 		this.context = context;
+		this.flash = flash;
 	}
 
 	public MessageHelper() {
@@ -21,14 +24,14 @@ public class MessageHelper implements Serializable {
 
 	public void addMessage(FacesMessage message) {
 		addMessage(null, message);
-	}
+	} 
 
 	public void addMessage(String clientId, FacesMessage message) {
 		context.addMessage(clientId, message);
 	}
 
 	public MessageHelper onFlash() {
-		context.getExternalContext().getFlash().setKeepMessages(true);
+		flash.setKeepMessages(true);
 		return this;
 	}
 }
