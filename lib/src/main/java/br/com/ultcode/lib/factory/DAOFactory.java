@@ -11,11 +11,11 @@ import javax.persistence.EntityManager;
 import br.com.ultcode.lib.dao.DAO;
 
 @SuppressWarnings("unchecked")
-public class DAOFactory implements Serializable{
+public class DAOFactory implements Serializable {
 
 	private static final long serialVersionUID = -8967987140017976532L;
 	private EntityManager manager;
-	
+
 	public DAOFactory() {
 	}
 
@@ -23,7 +23,7 @@ public class DAOFactory implements Serializable{
 	public DAOFactory(EntityManager manager) {
 		this.manager = manager;
 	}
-	
+
 	@Produces
 	public <T> DAO<T> factory(InjectionPoint point) {
 		ParameterizedType type = (ParameterizedType) point.getType();
