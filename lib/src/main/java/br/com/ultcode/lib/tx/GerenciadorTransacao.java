@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.interceptor.AroundInvoke;
 import javax.interceptor.Interceptor;
 import javax.interceptor.InvocationContext;
-import javax.persistence.EntityManager;
 
 import br.com.ultcode.lib.tx.annotation.Transacional;
 
@@ -21,21 +20,13 @@ public class GerenciadorTransacao implements Serializable {
 	 * depois desse interceptor, melhor definir no beans.xml
 	 */
 	private static final long serialVersionUID = -2818857359297499689L;
+	
 	@Inject
-	EntityManager manager;
+	Transacionado transacionado;
 
 	@AroundInvoke
 	public Object gerenciaTransacao(InvocationContext context) {
-
-		manager.getTransaction().begin();
-		try {
-			Object proceed = context.proceed();
-			manager.getTransaction().commit();
-			return proceed;
-		} catch (Exception e) {
-			manager.getTransaction().rollback();
-			throw new RuntimeException(e);
-		}
+		return transacionado.gerenciaTransacao(context);
 	}
 
 }

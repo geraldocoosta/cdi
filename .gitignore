@@ -1,4 +1,6 @@
 /livraria/target/
-
-
 /lib/target
+.project
+*/.project
+*/.classpath
+*/.settings
