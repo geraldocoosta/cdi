@@ -2,7 +2,6 @@ package br.com.ultcode.lib.jsf.phaselistener;
 
 import java.lang.annotation.Annotation;
 
-import javax.enterprise.event.Event;
 import javax.enterprise.inject.spi.BeanManager;
 import javax.enterprise.inject.spi.CDI;
 import javax.enterprise.util.AnnotationLiteral;

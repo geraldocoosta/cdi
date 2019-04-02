@@ -3,7 +3,6 @@ package br.com.ultcode.lib.jsf.phaselistener;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-import javax.inject.Inject;
 
 public class PhaseListenerGenerico implements PhaseListener{
 
