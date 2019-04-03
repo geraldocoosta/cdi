@@ -18,10 +18,10 @@ public class AutorBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Autor autor = new Autor();
 	private Integer autorId;
-	private DAO<Autor> autorDao;
+	private DAO<Autor, Integer> autorDao;
 
 	@Inject
-	public AutorBean(DAO<Autor> autorDao) {
+	public AutorBean(DAO<Autor, Integer> autorDao) {
 		this.autorDao = autorDao;
 	}
 

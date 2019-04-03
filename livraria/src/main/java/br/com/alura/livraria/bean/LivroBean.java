@@ -29,14 +29,14 @@ public class LivroBean implements Serializable {
 
 	private List<Livro> livros;
 
-	private DAO<Livro> livroDao;
+	private DAO<Livro, Integer> livroDao;
 
-	private DAO<Autor> autorDao;
+	private DAO<Autor, Integer> autorDao;
 
 	private MessageHelper messageHelper;
 
 	@Inject
-	public LivroBean(DAO<Livro> livroDao, DAO<Autor> autorDao, MessageHelper helper) {
+	public LivroBean(DAO<Livro, Integer> livroDao, DAO<Autor, Integer> autorDao, MessageHelper helper) {
 		this.livroDao = livroDao;
 		this.autorDao = autorDao;
 		this.messageHelper = helper;

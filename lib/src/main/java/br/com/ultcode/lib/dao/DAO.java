@@ -6,8 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 
-public class DAO<T> implements Serializable{
-	
+public class DAO<T, I> implements Serializable {
+
 	private static final long serialVersionUID = -1603139969274284275L;
 	private final Class<T> classe;
 	private EntityManager em;
@@ -38,27 +38,25 @@ public class DAO<T> implements Serializable{
 		return lista;
 	}
 
-	public T buscaPorId(Integer id) {
-		 
+	public T buscaPorId(I id) {
+
 		T instancia = em.find(classe, id);
 		return instancia;
 	}
 
 	public int contaTodos() {
-		 
-		long result = (Long) em.createQuery("select count(n) from " + classe.getSimpleName() +" n")
-				.getSingleResult();
+
+		long result = (Long) em.createQuery("select count(n) from " + classe.getSimpleName() + " n").getSingleResult();
 
 		return (int) result;
 	}
 
 	public List<T> listaTodosPaginada(int firstResult, int maxResults) {
-		 
+
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 
-		List<T> lista = em.createQuery(query).setFirstResult(firstResult)
-				.setMaxResults(maxResults).getResultList();
+		List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
 
 		return lista;
 	}

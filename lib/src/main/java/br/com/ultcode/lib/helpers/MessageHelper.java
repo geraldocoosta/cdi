@@ -24,7 +24,7 @@ public class MessageHelper implements Serializable {
 
 	public void addMessage(FacesMessage message) {
 		addMessage(null, message);
-	} 
+	}
 
 	public void addMessage(String clientId, FacesMessage message) {
 		context.addMessage(clientId, message);

@@ -18,25 +18,24 @@ import br.com.ultcode.lib.dao.DAO;
 
 @Named
 @ViewScoped
-public class VendasBean implements Serializable{
-	
+public class VendasBean implements Serializable {
+
 	private static final long serialVersionUID = 1L;
-	DAO<Livro> livrosDao;
+	DAO<Livro, Integer> livrosDao;
 
 	@Inject
-	public VendasBean(DAO<Livro> livrosDao) {
+	public VendasBean(DAO<Livro, Integer> livrosDao) {
 		this.livrosDao = livrosDao;
 	}
-	
+
 	public VendasBean() {
 	}
-
 
 	public BarChartModel getVendasModel() {
 
 		BarChartModel model = new BarChartModel();
 		model.setAnimate(true);
-		
+
 		ChartSeries vendaSerie = new ChartSeries();
 		vendaSerie.setLabel("Vendas 2016");
 
@@ -44,10 +43,10 @@ public class VendasBean implements Serializable{
 		for (Venda venda : vendas) {
 			vendaSerie.set(venda.getLivro().getTitulo(), venda.getQuantidade());
 		}
-		
+
 		ChartSeries vendaSerie2015 = new ChartSeries();
 		vendaSerie2015.setLabel("Vendas 2015");
-		
+
 		vendas = getVendas(4321);
 		for (Venda venda : vendas) {
 			vendaSerie2015.set(venda.getLivro().getTitulo(), venda.getQuantidade());

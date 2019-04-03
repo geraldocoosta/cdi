@@ -8,13 +8,13 @@ import br.com.alura.livraria.modelo.Usuario;
 import br.com.ultcode.lib.jpa.annotation.Query;
 
 public class UsuarioDao {
-	
-	
-	@Inject @Query("select u from Usuario u where u.email = :pEmail and u.senha = :pSenha")
+
+	@Inject
+	@Query("select u from Usuario u where u.email = :pEmail and u.senha = :pSenha")
 	private TypedQuery<Usuario> query;
 
 	public boolean existe(Usuario usuario) {
-		
+
 		query.setParameter("pEmail", usuario.getEmail());
 		query.setParameter("pSenha", usuario.getSenha());
 		try {
@@ -22,8 +22,7 @@ public class UsuarioDao {
 		} catch (NoResultException ex) {
 			return false;
 		}
-		
-		
+
 		return true;
 	}
 

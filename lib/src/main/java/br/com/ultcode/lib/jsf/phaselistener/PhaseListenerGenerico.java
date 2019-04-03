@@ -3,26 +3,21 @@ package br.com.ultcode.lib.jsf.phaselistener;
 import javax.faces.event.PhaseEvent;
 import javax.faces.event.PhaseId;
 import javax.faces.event.PhaseListener;
-import javax.inject.Inject;
 
-public class PhaseListenerGenerico implements PhaseListener{
+public class PhaseListenerGenerico implements PhaseListener {
 
 	private static final long serialVersionUID = 1472756908019302398L;
 
 	private PhaseListenerObserver observer = new PhaseListenerObserver();
-	
+
 	@Override
 	public void afterPhase(PhaseEvent event) {
-		observer
-			.after()
-			.fire(event);
+		observer.after().fire(event);
 	}
 
 	@Override
 	public void beforePhase(PhaseEvent event) {
-		observer
-			.before()
-			.fire(event);
+		observer.before().fire(event);
 	}
 
 	@Override
@@ -30,5 +25,4 @@ public class PhaseListenerGenerico implements PhaseListener{
 		return PhaseId.ANY_PHASE;
 	}
 
-	
 }

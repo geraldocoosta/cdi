@@ -20,7 +20,7 @@ public class GerenciadorTransacao implements Serializable {
 	 * depois desse interceptor, melhor definir no beans.xml
 	 */
 	private static final long serialVersionUID = -2818857359297499689L;
-	
+
 	@Inject
 	Transacionado transacionado;
 

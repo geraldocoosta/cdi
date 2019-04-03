@@ -16,7 +16,7 @@ public class Usuario implements Serializable {
 	private Integer id;
 	private String email;
 	private String senha;
-	
+
 	public String getEmail() {
 		return email;
 	}
@@ -25,7 +25,7 @@ public class Usuario implements Serializable {
 		this.email = email;
 	}
 
-		public Integer getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -40,7 +40,5 @@ public class Usuario implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	
 
 }
